@@ -1,0 +1,15 @@
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/ament_index/resource_index/package_run_dependencies/my_robot_description
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/ament_index/resource_index/parent_prefix_path/my_robot_description
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/environment/ament_prefix_path.sh
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/environment/ament_prefix_path.dsv
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/environment/path.sh
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/environment/path.dsv
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/local_setup.bash
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/local_setup.sh
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/local_setup.zsh
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/local_setup.dsv
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/package.dsv
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/ament_index/resource_index/packages/my_robot_description
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/cmake/my_robot_descriptionConfig.cmake
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/cmake/my_robot_descriptionConfig-version.cmake
+/home/ketg/Desktop/amr_ws/install/my_robot_description/share/my_robot_description/package.xml
