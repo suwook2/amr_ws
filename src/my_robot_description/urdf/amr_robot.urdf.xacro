@@ -1,22 +1,21 @@
 <?xml version="1.0"?>
 <robot name="amr_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <!-- 기본 로봇 치수 및 속성 정의 -->
-  <xacro:property name="robot_length" value="0.885"/>
-  <xacro:property name="robot_width" value="0.68"/>
-  <xacro:property name="robot_height" value="0.52"/>
-  <xacro:property name="front_wheel_radius" value="0.105"/>
-  <xacro:property name="front_wheel_thickness" value="0.045"/>
-  <xacro:property name="middle_wheel_radius" value="0.1025"/>
-  <xacro:property name="middle_wheel_thickness" value="0.063"/>
 
-  <!-- Base Link 정의 -->
+  <!-- [1] 로봇 치수/속성 정의 (예시) -->
+  <xacro:property name="robot_length" value="0.86"/>
+  <xacro:property name="robot_width"  value="0.68"/>
+  <xacro:property name="robot_height" value="0.11"/>
+  <xacro:property name="wheel_radius" value="0.1"/>
+  <xacro:property name="wheel_thickness" value="0.05"/>
+
+  <!-- [2] Base Link -->
   <link name="base_link">
     <visual>
       <geometry>
         <box size="${robot_length} ${robot_width} ${robot_height}"/>
       </geometry>
-      <origin xyz="0 0 0.26"/>
+      <origin xyz="0 0 0.05"/>
       <material name="gray">
         <color rgba="0.5 0.5 0.5 1"/>
       </material>
@@ -25,22 +24,24 @@
       <geometry>
         <box size="${robot_length} ${robot_width} ${robot_height}"/>
       </geometry>
-      <origin xyz="0 0 0.26"/>
+      <origin xyz="0 0 0.05"/>
     </collision>
     <inertial>
       <mass value="15"/>
       <origin xyz="0 0 0"/>
-      <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="1.0"/>
+      <!-- 관성값 예시, 실제 모델에 맞춰 조정 필요 -->
+      <inertia ixx="0.615" ixy="0" ixz="0" iyy="0.853" iyz="0" izz="1.329"/>
     </inertial>
   </link>
 
-  <!-- 바퀴 매크로 정의 -->
-  <xacro:macro name="wheel" params="wheel_name wheel_joint x y z radius thickness">
+  <!-- [3] 바퀴 매크로 (회전 가능 조인트) -->
+  <xacro:macro name="wheel" params="wheel_name wheel_joint x y z">
     <link name="${wheel_name}">
       <visual>
         <geometry>
-          <cylinder radius="${radius}" length="${thickness}"/>
+          <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
         </geometry>
+        <!-- 바퀴가 y축을 축으로 회전하므로 rpy="-90deg" -->
         <origin rpy="-1.5708 0 0"/>
         <material name="black">
           <color rgba="0.2 0.2 0.2 1"/>
@@ -48,14 +49,15 @@
       </visual>
       <collision>
         <geometry>
-          <cylinder radius="${radius}" length="${thickness}"/>
+          <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
         </geometry>
         <origin rpy="-1.5708 0 0"/>
       </collision>
       <inertial>
         <mass value="2"/>
         <origin xyz="0 0 0"/>
-        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+        <!-- 예시 관성값 -->
+        <inertia ixx="0.01225" ixy="0" ixz="0" iyy="0.01225" iyz="0" izz="0.0093"/>
       </inertial>
     </link>
     <joint name="${wheel_joint}" type="continuous">
@@ -68,130 +70,153 @@
     </joint>
   </xacro:macro>
 
-  <!-- 고정된 바퀴 매크로 정의 -->
-  <xacro:macro name="fixed_wheel" params="wheel_name wheel_joint x y z radius thickness">
-    <link name="${wheel_name}">
-      <visual>
-        <geometry>
-          <cylinder radius="${radius}" length="${thickness}"/>
-        </geometry>
-        <origin rpy="-1.5708 0 0"/>
-        <material name="black">
-          <color rgba="0.2 0.2 0.2 1"/>
-        </material>
-      </visual>
-      <collision>
-        <geometry>
-          <cylinder radius="${radius}" length="${thickness}"/>
-        </geometry>
-        <origin rpy="-1.5708 0 0"/>
-      </collision>
-      <inertial>
-        <mass value="2"/>
-        <origin xyz="0 0 0"/>
-        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-      </inertial>
-    </link>
-    <joint name="${wheel_joint}" type="fixed">
-      <parent link="base_link"/>
-      <child link="${wheel_name}"/>
-      <origin xyz="${x} ${y} ${z}"/>
+  <!-- [4] 6개 바퀴 정의 (앞,중간,뒤 × 좌/우) -->
+  <xacro:wheel wheel_name="front_left_wheel"   wheel_joint="front_left_wheel_joint"   x="0.3"  y="0.34"  z="0"/>
+  <xacro:wheel wheel_name="middle_left_wheel"  wheel_joint="middle_left_wheel_joint"  x="0.0"  y="0.34"  z="0"/>
+  <xacro:wheel wheel_name="rear_left_wheel"    wheel_joint="rear_left_wheel_joint"    x="-0.3" y="0.34"  z="0"/>
+
+  <xacro:wheel wheel_name="front_right_wheel"  wheel_joint="front_right_wheel_joint"  x="0.3"  y="-0.34" z="0"/>
+  <xacro:wheel wheel_name="middle_right_wheel" wheel_joint="middle_right_wheel_joint" x="0.0"  y="-0.34" z="0"/>
+  <xacro:wheel wheel_name="rear_right_wheel"   wheel_joint="rear_right_wheel_joint"   x="-0.3" y="-0.34" z="0"/>
+
+  <!-- [5] 각 바퀴에 대한 transmission (ros2_control) -->
+  <!-- Velocity 제어(예: DiffDriveController) 기준 -->
+  <transmission name="front_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="front_left_wheel_joint">
+      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
     </joint>
-  </xacro:macro>
+    <actuator name="front_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
 
-  <!-- 바퀴 정의 -->
-  <xacro:wheel wheel_name="front_left_wheel" wheel_joint="front_left_wheel_joint" x="0.3" y="0.34" z="0.0" radius="${front_wheel_radius}" thickness="${front_wheel_thickness}"/>
-  <xacro:fixed_wheel wheel_name="middle_left_wheel" wheel_joint="middle_left_wheel_joint" x="0.0" y="0.34" z="0.0" radius="${middle_wheel_radius}" thickness="${middle_wheel_thickness}"/>
-  <xacro:wheel wheel_name="rear_left_wheel" wheel_joint="rear_left_wheel_joint" x="-0.3" y="0.34" z="0.0" radius="${front_wheel_radius}" thickness="${front_wheel_thickness}"/>
+  <transmission name="middle_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="middle_left_wheel_joint">
+      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
+    </joint>
+    <actuator name="middle_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
 
-  <xacro:wheel wheel_name="front_right_wheel" wheel_joint="front_right_wheel_joint" x="0.3" y="-0.34" z="0.0" radius="${front_wheel_radius}" thickness="${front_wheel_thickness}"/>
-  <xacro:fixed_wheel wheel_name="middle_right_wheel" wheel_joint="middle_right_wheel_joint" x="0.0" y="-0.34" z="0.0" radius="${middle_wheel_radius}" thickness="${middle_wheel_thickness}"/>
-  <xacro:wheel wheel_name="rear_right_wheel" wheel_joint="rear_right_wheel_joint" x="-0.3" y="-0.34" z="0.0" radius="${front_wheel_radius}" thickness="${front_wheel_thickness}"/>
+  <transmission name="rear_left_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rear_left_wheel_joint">
+      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
+    </joint>
+    <actuator name="rear_left_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
 
-  <!-- LiDAR 센서 -->
-  <link name="front_lidar">
+  <transmission name="front_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="front_right_wheel_joint">
+      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
+    </joint>
+    <actuator name="front_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="middle_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="middle_right_wheel_joint">
+      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
+    </joint>
+    <actuator name="middle_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+  <transmission name="rear_right_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="rear_right_wheel_joint">
+      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
+    </joint>
+    <actuator name="rear_right_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+
+
+  <!-- [6] 앞/뒤 LiDAR 간단 예시 (Gazebo sensor) -->
+  <!-- 실제로는 xacro:include나 다양한 파라미터를 쓸 수 있음 -->
+  <link name="lidar_front_link">
     <visual>
       <geometry>
-        <cylinder radius="0.05" length="0.1"/>
+        <cylinder length="0.04" radius="0.05"/>
       </geometry>
+      <origin xyz="0 0 0"/>
       <material name="red">
         <color rgba="1 0 0 1"/>
       </material>
     </visual>
   </link>
-  <joint name="front_lidar_joint" type="fixed">
+  <joint name="lidar_front_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="front_lidar"/>
-    <origin xyz="0.4 0 0.3"/>
+    <child link="lidar_front_link"/>
+    <origin xyz="0.4 0 0.1"/>
   </joint>
+  <gazebo reference="lidar_front_link">
+    <sensor type="ray" name="front_laser">
+      <update_rate>10</update_rate>
+      <topicName>front_laser/scan</topicName>
+      <horizontal_samples>720</horizontal_samples>
+      <horizontal_min_angle>-1.57</horizontal_min_angle>
+      <horizontal_max_angle>1.57</horizontal_max_angle>
+      <range>
+        <min>0.1</min>
+        <max>30.0</max>
+      </range>
+    </sensor>
+  </gazebo>
 
-  <link name="rear_lidar">
+  <link name="lidar_rear_link">
     <visual>
       <geometry>
-        <cylinder radius="0.05" length="0.1"/>
+        <cylinder length="0.04" radius="0.05"/>
       </geometry>
-      <material name="blue">
-        <color rgba="0 0 1 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="rear_lidar_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="rear_lidar"/>
-    <origin xyz="-0.4 0 0.3"/>
-  </joint>
-
-  <!-- IMU 센서>
-  <link name="imu_sensor">
-    <visual>
-      <geometry>
-        <box size="0.1 0.1 0.05"/>
-      </geometry>
-      <material name="green">
+      <material name="red">
         <color rgba="0 1 0 1"/>
       </material>
     </visual>
-    <collision>
-      <geometry>
-        <box size="0.1 0.1 0.05"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="0.2"/>
-      <origin xyz="0 0 0"/>
-    </inertial>
   </link>
-  <joint name="imu_sensor_joint" type="fixed">
+  <joint name="lidar_rear_joint" type="fixed">
     <parent link="base_link"/>
-    <child link="imu_sensor"/>
-    <origin xyz="0 0 0.2"/>
-  </joint-->
-
-  <!-- 카메라 -->
-  <link name="front_camera">
-    <visual>
-      <geometry>
-        <box size="0.05 0.05 0.05"/>
-      </geometry>
-      <material name="blue">
-        <color rgba="0 0 1 1"/>
-      </material>
-    </visual>
-  </link>
-  <joint name="front_camera_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="front_camera"/>
-    <origin xyz="0.4 0 0.5"/>
+    <child link="lidar_rear_link"/>
+    <origin xyz="-0.4 0 0.1" rpy="0 0 3.14159"/>
   </joint>
+  <gazebo reference="lidar_rear_link">
+    <sensor type="ray" name="rear_laser">
+      <update_rate>10</update_rate>
+      <topicName>rear_laser/scan</topicName>
+      <horizontal_samples>720</horizontal_samples>
+      <horizontal_min_angle>-1.57</horizontal_min_angle>
+      <horizontal_max_angle>1.57</horizontal_max_angle>
+      <range>
+        <min>0.1</min>
+        <max>30.0</max>
+      </range>
+    </sensor>
+  </gazebo>
 
-    <!-- [7] ROS2 Control Plugin: gazebo_ros2_control -->
+<!-- [7] ROS2 Control Plugin: gazebo_ros2_control -->
   <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <ros2_control name="amr_robot">
+      <ros2_control>
+        <robot>amr_robot</robot>
         <ros2_control_parameters>../config/ros2_control.yaml</ros2_control_parameters>
       </ros2_control>
     </plugin>
   </gazebo>
-
 
 </robot>
