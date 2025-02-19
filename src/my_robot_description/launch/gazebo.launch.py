@@ -54,7 +54,7 @@ def generate_launch_description():
     # ros2 run controller_manager spawner diff_drive_controller -c /controller_manager
     diff_drive_spawner = Node(
         package='controller_manager',
-        executable='spawner.py',
+        executable='spawner',
         arguments=['diff_drive_controller', '-c', '/controller_manager'],
         output='screen'
     )
