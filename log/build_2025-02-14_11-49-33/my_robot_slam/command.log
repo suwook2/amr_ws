@@ -1,4 +1,0 @@
-Invoking command in '/home/ketg/Desktop/amr_ws/build/my_robot_slam': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ketg/Desktop/amr_ws/build/my_robot_slam -- -j8 -l8
-Invoked command in '/home/ketg/Desktop/amr_ws/build/my_robot_slam' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/ketg/Desktop/amr_ws/build/my_robot_slam -- -j8 -l8
-Invoking command in '/home/ketg/Desktop/amr_ws/build/my_robot_slam': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ketg/Desktop/amr_ws/build/my_robot_slam
-Invoked command in '/home/ketg/Desktop/amr_ws/build/my_robot_slam' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --install /home/ketg/Desktop/amr_ws/build/my_robot_slam
