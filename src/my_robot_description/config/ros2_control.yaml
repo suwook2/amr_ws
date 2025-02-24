@@ -11,33 +11,35 @@ controller_manager:
     diff_drive_controller:
       type: diff_drive_controller/DiffDriveController
 
-      # 6륜 설정
-      left_wheel_names: [front_left_wheel_joint, middle_left_wheel_joint, rear_left_wheel_joint]
-      right_wheel_names: [front_right_wheel_joint, middle_right_wheel_joint, rear_right_wheel_joint]
+diff_drive_controller:
+  ros__parameters:
+    # 6륜 설정
+    left_wheel_names: ["front_left_wheel_joint", "middle_left_wheel_joint", "rear_left_wheel_joint"]
+    right_wheel_names: ["front_right_wheel_joint", "middle_right_wheel_joint", "rear_right_wheel_joint"]
 
-      wheel_separation: 0.68
-      wheel_radius: 0.1
+    wheel_separation: 0.68
+    wheel_radius: 0.1
 
-      # 속도/가속 제한 등
-      open_loop: true
-      cmd_vel_timeout: 0.5
-      enable_odom_tf: true
-      publish_rate: 50.0
-      odom_frame_id: "odom"
-      base_frame_id: "base_link"
+    # 속도/가속 제한 등
+    open_loop: false
+    cmd_vel_timeout: 1.0
+    enable_odom_tf: true
+    publish_rate: 50.0
+    odom_frame_id: "odom"
+    base_frame_id: "base_link"
 
-      # 속도/가속도 제한 (필요 시 조정)
-      linear.x.has_velocity_limits: true
-      linear.x.max_velocity: 1.0
-      linear.x.min_velocity: -1.0
-      linear.x.has_acceleration_limits: true
-      linear.x.max_acceleration: 1.0
+    # 속도/가속도 제한 (필요 시 조정)
+    linear.x.has_velocity_limits: true
+    linear.x.max_velocity: 1.0
+    linear.x.min_velocity: -1.0
+    linear.x.has_acceleration_limits: true
+    linear.x.max_acceleration: 1.0
 
-      angular.z.has_velocity_limits: true
-      angular.z.max_velocity: 1.0
-      angular.z.min_velocity: -1.0
-      angular.z.has_acceleration_limits: true
-      angular.z.max_acceleration: 1.0
+    angular.z.has_velocity_limits: true
+    angular.z.max_velocity: 1.0
+    angular.z.min_velocity: -1.0
+    angular.z.has_acceleration_limits: true
+    angular.z.max_acceleration: 1.0
 
-      publish_limited_velocity: true
-      pose_publish_period: 0.05
+    publish_limited_velocity: true
+    pose_publish_period: 0.05
