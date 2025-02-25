@@ -23,6 +23,8 @@ diff_drive_controller:
     # 속도/가속 제한 등
     open_loop: false
     cmd_vel_timeout: 1.0
+    use_stamped_vel: false
+    cmd_vel_topic: "/diff_drive_controller/cmd_vel"
     enable_odom_tf: true
     publish_rate: 50.0
     odom_frame_id: "odom"

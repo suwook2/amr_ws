@@ -68,7 +68,7 @@ def generate_launch_description():
     diff_drive_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['diff_drive_controller', '-c', '/controller_manager'],
+        arguments=['diff_drive_controller', '-c', '/controller_manager', '--param-file', os.path.join(pkg_share, 'config', 'ros2_control.yaml')],
         output='screen'
     )
 

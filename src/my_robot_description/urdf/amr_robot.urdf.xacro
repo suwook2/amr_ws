@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <robot name="amr_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-
   <!-- 로봇 치수 정의 -->
   <xacro:property name="robot_length" value="0.86"/>
   <xacro:property name="robot_width"  value="0.68"/>
@@ -45,12 +44,29 @@
           <color rgba="0.2 0.2 0.2 1"/>
         </material>
       </visual>
+
       <collision>
         <geometry>
           <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
         </geometry>
         <origin rpy="-1.5708 0 0"/>
+
+        <!-- 
+          바퀴와 지면 사이의 마찰을 적용하기 위해 
+          Gazebo SDF 확장 태그(material > friction > ode > mu/mu2) 추가 
+        -->
+        <gazebo>
+          <material>
+            <friction>
+              <ode>
+                <mu>1.0</mu>     <!-- 마찰 계수, 상황에 따라 1.0 ~ 2.0 등으로 조절 -->
+                <mu2>1.0</mu2>
+              </ode>
+            </friction>
+          </material>
+        </gazebo>
       </collision>
+
       <inertial>
         <mass value="2"/>
         <origin xyz="0 0 0"/>
