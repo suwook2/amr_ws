@@ -1,0 +1,107 @@
+[0.006s] Invoking command in '/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq': AMENT_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:/opt/ros/humble LD_LIBRARY_PATH=/home/ketg/Desktop/amr_ws/install/serial/lib:${LD_LIBRARY_PATH} /usr/bin/cmake /home/ketg/Desktop/amr_ws/src/diffdrive_roboteq -DCMAKE_INSTALL_PREFIX=/home/ketg/Desktop/amr_ws/install/diffdrive_roboteq
+[0.047s] -- The C compiler identification is GNU 11.4.0
+[0.097s] -- The CXX compiler identification is GNU 11.4.0
+[0.102s] -- Detecting C compiler ABI info
+[0.159s] -- Detecting C compiler ABI info - done
+[0.169s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.169s] -- Detecting C compile features
+[0.170s] -- Detecting C compile features - done
+[0.173s] -- Detecting CXX compiler ABI info
+[0.246s] -- Detecting CXX compiler ABI info - done
+[0.252s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.252s] -- Detecting CXX compile features
+[0.252s] -- Detecting CXX compile features - done
+[0.254s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.374s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.442s] -- Found serial: 1.2.1 (/home/ketg/Desktop/amr_ws/install/serial/share/serial/cmake)
+[0.451s] -- Found hardware_interface: 2.47.0 (/opt/ros/humble/share/hardware_interface/cmake)
+[0.482s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.486s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.493s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.502s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.514s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.681s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.683s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.704s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.736s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.738s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.750s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.752s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.759s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[0.767s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.773s] -- Looking for pthread.h
+[0.831s] -- Looking for pthread.h - found
+[0.831s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.902s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.903s] -- Found Threads: TRUE  
+[0.940s] -- Found controller_manager: 2.48.0 (/opt/ros/humble/share/controller_manager/cmake)
+[1.055s] -- Configuring done
+[1.084s] -- Generating done
+[1.088s] -- Build files have been written to: /home/ketg/Desktop/amr_ws/build/diffdrive_roboteq
+[1.096s] Invoked command in '/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq' returned '0': AMENT_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:/opt/ros/humble LD_LIBRARY_PATH=/home/ketg/Desktop/amr_ws/install/serial/lib:${LD_LIBRARY_PATH} /usr/bin/cmake /home/ketg/Desktop/amr_ws/src/diffdrive_roboteq -DCMAKE_INSTALL_PREFIX=/home/ketg/Desktop/amr_ws/install/diffdrive_roboteq
+[1.097s] Invoking command in '/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq': AMENT_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:/opt/ros/humble LD_LIBRARY_PATH=/home/ketg/Desktop/amr_ws/install/serial/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --build /home/ketg/Desktop/amr_ws/build/diffdrive_roboteq -- -j8 -l8
+[1.135s] [ 66%] [32mBuilding CXX object CMakeFiles/diffdrive_roboteq.dir/src/query_config.cpp.o[0m
+[1.135s] [ 66%] [32mBuilding CXX object CMakeFiles/diffdrive_roboteq.dir/src/diffdrive_roboteq.cpp.o[0m
+[3.954s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Kvoid diffdrive_roboteq::DiffDriveRoboteqHardware::extract_hardware_parameters(const hardware_interface::HardwareInfo&)[m[K’:
+[3.954s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:40:105:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.954s]    40 | ract_hardware_parameters([01;35m[Kconst hardware_interface::HardwareInfo & info[m[K)
+[3.954s]       |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.955s] 
+[3.955s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Kvoid diffdrive_roboteq::DiffDriveRoboteqHardware::initialise_interfaces(const hardware_interface::HardwareInfo&)[m[K’:
+[3.955s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:63:99:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.955s]    63 | e::initialise_interfaces([01;35m[Kconst hardware_interface::HardwareInfo & info[m[K)
+[3.955s]       |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.955s] 
+[3.957s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Khardware_interface::CallbackReturn diffdrive_roboteq::DiffDriveRoboteqHardware::validate_joint_config(const hardware_interface::HardwareInfo&)[m[K’:
+[3.957s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:82:129:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.957s]    82 | e::validate_joint_config([01;35m[Kconst hardware_interface::HardwareInfo & info[m[K)
+[3.957s]       |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+[3.957s] 
+[3.985s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_roboteq::DiffDriveRoboteqHardware::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[3.985s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:613:124:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[3.985s]   613 | e::read(const rclcpp::Time & /*time*/, [01;35m[Kconst rclcpp::Duration & period[m[K)
+[3.985s]       |                                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[3.985s] 
+[4.581s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Khardware_interface::CallbackReturn diffdrive_roboteq::DiffDriveRoboteqHardware::validate_joint_config(const hardware_interface::HardwareInfo&)[m[K’:
+[4.581s] [01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:136:5:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+[4.581s]   136 |     [01;35m[K}[m[K
+[4.581s]       |     [01;35m[K^[m[K
+[5.443s] [100%] [32m[1mLinking CXX shared library libdiffdrive_roboteq.so[0m
+[5.661s] [100%] Built target diffdrive_roboteq
+[5.668s] Invoked command in '/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq' returned '0': AMENT_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:/opt/ros/humble LD_LIBRARY_PATH=/home/ketg/Desktop/amr_ws/install/serial/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --build /home/ketg/Desktop/amr_ws/build/diffdrive_roboteq -- -j8 -l8
+[5.670s] Invoking command in '/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq': AMENT_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:/opt/ros/humble LD_LIBRARY_PATH=/home/ketg/Desktop/amr_ws/install/serial/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --install /home/ketg/Desktop/amr_ws/build/diffdrive_roboteq
+[5.675s] -- Install configuration: ""
+[5.675s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/src
+[5.675s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/src/diffdrive_roboteq.cpp
+[5.675s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/src/query_config.cpp
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/config
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/config/query.yaml
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/include/diffdrive_roboteq
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/include/diffdrive_roboteq/diffdrive_roboteq
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/include/diffdrive_roboteq/diffdrive_roboteq/visibility_control.h
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/include/diffdrive_roboteq/diffdrive_roboteq/query_config.hpp
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/include/diffdrive_roboteq/diffdrive_roboteq/diffdrive_roboteq.hpp
+[5.676s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/lib/libdiffdrive_roboteq.so
+[5.677s] -- Set runtime path of "/home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/lib/libdiffdrive_roboteq.so" to ""
+[5.677s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/diffdrive_roboteq.xml
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/environment/library_path.sh
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/environment/library_path.dsv
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/ament_index/resource_index/package_run_dependencies/diffdrive_roboteq
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/ament_index/resource_index/parent_prefix_path/diffdrive_roboteq
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/environment/ament_prefix_path.sh
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/environment/ament_prefix_path.dsv
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/environment/path.sh
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/environment/path.dsv
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/local_setup.bash
+[5.678s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/local_setup.sh
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/local_setup.zsh
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/local_setup.dsv
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/package.dsv
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/ament_index/resource_index/packages/diffdrive_roboteq
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/diffdrive_roboteq
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/cmake/ament_cmake_export_libraries-extras.cmake
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/cmake/diffdrive_roboteqConfig.cmake
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/cmake/diffdrive_roboteqConfig-version.cmake
+[5.679s] -- Installing: /home/ketg/Desktop/amr_ws/install/diffdrive_roboteq/share/diffdrive_roboteq/package.xml
+[5.681s] Invoked command in '/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq' returned '0': AMENT_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/ketg/Desktop/amr_ws/install/serial:/opt/ros/humble LD_LIBRARY_PATH=/home/ketg/Desktop/amr_ws/install/serial/lib:${LD_LIBRARY_PATH} /usr/bin/cmake --install /home/ketg/Desktop/amr_ws/build/diffdrive_roboteq

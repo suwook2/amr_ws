@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-488d0856d4b400c777bd.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "diffdrive_roboteq",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "diffdrive_roboteq::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diffdrive_roboteq-ce4e45c7549cb79e3687.json",
+					"name" : "diffdrive_roboteq",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "diffdrive_roboteq_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-diffdrive_roboteq_uninstall-f3f9e3aa11212afc0eb8.json",
+					"name" : "diffdrive_roboteq_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-aec8a93d14a177a7a54a.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ketg/Desktop/amr_ws/build/diffdrive_roboteq",
+		"source" : "/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

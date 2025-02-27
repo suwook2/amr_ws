@@ -1,0 +1,24 @@
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Kvoid diffdrive_roboteq::DiffDriveRoboteqHardware::extract_hardware_parameters(const hardware_interface::HardwareInfo&)[m[K’:
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:40:105:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   40 | ract_hardware_parameters([01;35m[Kconst hardware_interface::HardwareInfo & info[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Kvoid diffdrive_roboteq::DiffDriveRoboteqHardware::initialise_interfaces(const hardware_interface::HardwareInfo&)[m[K’:
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:63:99:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   63 | e::initialise_interfaces([01;35m[Kconst hardware_interface::HardwareInfo & info[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Khardware_interface::CallbackReturn diffdrive_roboteq::DiffDriveRoboteqHardware::validate_joint_config(const hardware_interface::HardwareInfo&)[m[K’:
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:82:129:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kinfo[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   82 | e::validate_joint_config([01;35m[Kconst hardware_interface::HardwareInfo & info[m[K)
+      |                          [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~[m[K
+
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Kvirtual hardware_interface::return_type diffdrive_roboteq::DiffDriveRoboteqHardware::read(const rclcpp::Time&, const rclcpp::Duration&)[m[K’:
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:613:124:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kperiod[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+  613 | e::read(const rclcpp::Time & /*time*/, [01;35m[Kconst rclcpp::Duration & period[m[K)
+      |                                        [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:[m[K In member function ‘[01m[Khardware_interface::CallbackReturn diffdrive_roboteq::DiffDriveRoboteqHardware::validate_joint_config(const hardware_interface::HardwareInfo&)[m[K’:
+[01m[K/home/ketg/Desktop/amr_ws/src/diffdrive_roboteq/src/diffdrive_roboteq.cpp:136:5:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+  136 |     [01;35m[K}[m[K
+      |     [01;35m[K^[m[K

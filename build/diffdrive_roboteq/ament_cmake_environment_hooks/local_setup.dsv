@@ -1,0 +1,3 @@
+source;share/diffdrive_roboteq/environment/ament_prefix_path.sh
+source;share/diffdrive_roboteq/environment/library_path.sh
+source;share/diffdrive_roboteq/environment/path.sh
