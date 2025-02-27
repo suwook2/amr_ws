@@ -1,6 +1,17 @@
 <?xml version="1.0"?>
 <robot name="amr_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
+    <!-- Materials -->
+  <material name="black">
+    <color rgba="0.2 0.2 0.2 1"/>
+  </material>
+  <material name="gray">
+    <color rgba="0.5 0.5 0.5 1"/>
+  </material>
+  <material name="red">
+    <color rgba="1 0 0 1"/>
+  </material>
+
   <!-- 로봇 치수 정의 -->
   <xacro:property name="robot_length" value="0.86"/>
   <xacro:property name="robot_width"  value="0.68"/>
@@ -15,9 +26,7 @@
         <box size="${robot_length} ${robot_width} ${robot_height}"/>
       </geometry>
       <origin xyz="0 0 0.05"/>
-      <material name="gray">
-        <color rgba="0.5 0.5 0.5 1"/>
-      </material>
+      <material name="gray"/>
     </visual>
     <collision>
       <geometry>
@@ -31,6 +40,11 @@
       <inertia ixx="0.615" ixy="0" ixz="0" iyy="0.853" iyz="0" izz="1.329"/>
     </inertial>
   </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+
 
   <!-- 바퀴 매크로 (회전 가능) -->
   <xacro:macro name="wheel" params="wheel_name wheel_joint x y z">
@@ -40,9 +54,7 @@
           <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
         </geometry>
         <origin rpy="-1.5708 0 0"/>
-        <material name="black">
-          <color rgba="0.2 0.2 0.2 1"/>
-        </material>
+        <material name="black"/>
       </visual>
 
       <collision>
@@ -50,7 +62,6 @@
           <cylinder length="${wheel_thickness}" radius="${wheel_radius}"/>
         </geometry>
         <origin rpy="-1.5708 0 0"/>
-
         <!-- 
           바퀴와 지면 사이의 마찰을 적용하기 위해 
           Gazebo SDF 확장 태그(material > friction > ode > mu/mu2) 추가 
@@ -59,8 +70,8 @@
           <material>
             <friction>
               <ode>
-                <mu>1.0</mu>     <!-- 마찰 계수, 상황에 따라 1.0 ~ 2.0 등으로 조절 -->
-                <mu2>1.0</mu2>
+                <mu>0.6</mu>     <!-- 전진 마찰력 -->
+                <mu2>0.01</mu2>  <!-- 측면 마찰력(옴니 휠 적용) -->
               </ode>
             </friction>
           </material>
@@ -88,63 +99,52 @@
   <xacro:wheel wheel_name="front_left_wheel"
                wheel_joint="front_left_wheel_joint"
                x="0.3" y="0.34" z="0"/>
+  <gazebo reference="front_left_wheel">
+    <material>Gazebo/BlackTransparent</material>
+  </gazebo>
+
   <xacro:wheel wheel_name="middle_left_wheel"
                wheel_joint="middle_left_wheel_joint"
                x="0.0" y="0.34" z="0"/>
+  <gazebo reference="middle_left_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
   <xacro:wheel wheel_name="rear_left_wheel"
                wheel_joint="rear_left_wheel_joint"
                x="-0.3" y="0.34" z="0"/>
+  <gazebo reference="rear_left_wheel">
+    <material>Gazebo/BlackTransparent</material>
+  </gazebo>
 
   <xacro:wheel wheel_name="front_right_wheel"
                wheel_joint="front_right_wheel_joint"
                x="0.3" y="-0.34" z="0"/>
+  <gazebo reference="front_right_wheel">
+    <material>Gazebo/BlackTransparent</material>
+  </gazebo>
+
   <xacro:wheel wheel_name="middle_right_wheel"
                wheel_joint="middle_right_wheel_joint"
                x="0.0" y="-0.34" z="0"/>
+  <gazebo reference="middle_right_wheel">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
   <xacro:wheel wheel_name="rear_right_wheel"
                wheel_joint="rear_right_wheel_joint"
                x="-0.3" y="-0.34" z="0"/>
+    <gazebo reference="rear_right_wheel">
+    <material>Gazebo/BlackTransparent</material>
+  </gazebo>
 
   <!-- Transmission (ros2_control) -->
-  <transmission name="front_left_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="front_left_wheel_joint">
-      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
-    </joint>
-    <actuator name="front_left_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </actuator>
-  </transmission>
-
   <transmission name="middle_left_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="middle_left_wheel_joint">
       <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
     </joint>
     <actuator name="middle_left_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </actuator>
-  </transmission>
-
-  <transmission name="rear_left_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="rear_left_wheel_joint">
-      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
-    </joint>
-    <actuator name="rear_left_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </actuator>
-  </transmission>
-
-  <transmission name="front_right_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="front_right_wheel_joint">
-      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
-    </joint>
-    <actuator name="front_right_motor">
       <mechanicalReduction>1</mechanicalReduction>
       <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
     </actuator>
@@ -161,17 +161,6 @@
     </actuator>
   </transmission>
 
-  <transmission name="rear_right_trans">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="rear_right_wheel_joint">
-      <interfaceType>hardware_interface/VelocityJointInterface</interfaceType>
-    </joint>
-    <actuator name="rear_right_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </actuator>
-  </transmission>
-
   <!-- Lidar front -->
   <link name="lidar_front_link">
     <visual>
@@ -179,9 +168,7 @@
         <cylinder length="0.04" radius="0.05"/>
       </geometry>
       <origin xyz="0 0 0"/>
-      <material name="red">
-        <color rgba="1 0 0 1"/>
-      </material>
+      <material name="red"/>
     </visual>
   </link>
   <joint name="lidar_front_joint" type="fixed">
@@ -202,6 +189,9 @@
       </range>
     </sensor>
   </gazebo>
+  <gazebo reference="lidar_front_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
 
   <!-- Lidar rear -->
   <link name="lidar_rear_link">
@@ -209,9 +199,7 @@
       <geometry>
         <cylinder length="0.04" radius="0.05"/>
       </geometry>
-      <material name="red">
-        <color rgba="0 1 0 1"/>
-      </material>
+      <material name="red"/>
     </visual>
   </link>
   <joint name="lidar_rear_joint" type="fixed">
@@ -232,22 +220,15 @@
       </range>
     </sensor>
   </gazebo>
+  <gazebo reference="lidar_rear_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
 
   <ros2_control name="GazeboSystem" type="system">
     <hardware>
       <!-- Gazebo 시뮬레이터용 가상 하드웨어 인터페이스 플러그인 -->
       <plugin>gazebo_ros2_control/GazeboSystem</plugin>
     </hardware>
-
-    <!-- 왼쪽 휠 조인트들 -->
-    <joint name="front_left_wheel_joint">
-      <command_interface name="velocity">
-        <param name="min">-1.0</param>
-        <param name="max">1.0</param>
-      </command_interface>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
 
     <joint name="middle_left_wheel_joint">
       <command_interface name="velocity">
@@ -258,35 +239,7 @@
       <state_interface name="velocity"/>
     </joint>
 
-    <joint name="rear_left_wheel_joint">
-      <command_interface name="velocity">
-        <param name="min">-1.0</param>
-        <param name="max">1.0</param>
-      </command_interface>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
-
-    <!-- 오른쪽 휠 조인트들 -->
-    <joint name="front_right_wheel_joint">
-      <command_interface name="velocity">
-        <param name="min">-1.0</param>
-        <param name="max">1.0</param>
-      </command_interface>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
-
     <joint name="middle_right_wheel_joint">
-      <command_interface name="velocity">
-        <param name="min">-1.0</param>
-        <param name="max">1.0</param>
-      </command_interface>
-      <state_interface name="position"/>
-      <state_interface name="velocity"/>
-    </joint>
-
-    <joint name="rear_right_wheel_joint">
       <command_interface name="velocity">
         <param name="min">-1.0</param>
         <param name="max">1.0</param>
