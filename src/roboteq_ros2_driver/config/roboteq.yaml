@@ -3,10 +3,10 @@ roboteq_ros2_driver:
     pub_odom_tf: true
     odom_frame: "odom"
     base_frame: "base_link"
-    cmdvel_topic: "cmd_vel"
+    cmdvel_topic: "/diff_drive_controller/cmd_vel_unstamped"
     odom_topic: "odom"
-    port: "/dev/ttyUSB0"
-    baud: 230600
+    port: "/dev/ttyS4"
+    baud: 115200
     open_loop: false
     wheel_circumference: 0.464
     track_width: 0.275
